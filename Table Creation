@@ -1,5 +1,11 @@
 CREATE TABLE inventory(item TEXT, quantity INT, price INT);
 INSERT INTO inventory(item, quantity, price)
-  VALUES ();
+  VALUES ('toothpaste', 500, 7);
+INSERT INTO inventory(item, quantity, price)
+  VALUES ('SW Design Book', 100, 170);
+INSERT INTO inventory(item, quantity, price)
+  VALUES ('doll', 250, 5);
+INSERT INTO inventory(item, quantity, price)
+  VALUES ('camera', 150, 50);  
   
 CREATE TABLE cart(item TEXT, quantity INT, price INT, total INT);
