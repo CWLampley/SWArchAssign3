@@ -7,5 +7,12 @@ INSERT INTO inventory(item, quantity, price)
   VALUES ('doll', 250, 5);
 INSERT INTO inventory(item, quantity, price)
   VALUES ('camera', 150, 50);  
-  
+
+//
+.mode column
+.header on
+.width 16 12 6
+select * from inventory
+//
+
 CREATE TABLE cart(item TEXT, quantity INT, price INT, total INT);
