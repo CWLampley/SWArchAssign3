@@ -14,5 +14,3 @@ INSERT INTO inventory(item, quantity, price)
 .width 16 12 6
 select * from inventory
 //
-
-CREATE TABLE cart(item TEXT, quantity INT, price INT, total INT);
