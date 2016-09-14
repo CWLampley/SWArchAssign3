@@ -1,0 +1,5 @@
+CREATE TABLE inventory(item TEXT, quantity INT, price INT);
+INSERT INTO inventory(item, quantity, price)
+  VALUES ();
+  
+CREATE TABLE cart(item TEXT, quantity INT, price INT, total INT);
