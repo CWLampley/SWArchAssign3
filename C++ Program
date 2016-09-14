@@ -1,1 +1,7 @@
-
+//
+1. Set up the prices within the program
+2. Ask how many of which item user wants
+3. Multiply price by amount
+4. Get total price in cart
+5. Subtract amount from quantity in database
+//
