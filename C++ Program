@@ -13,11 +13,6 @@
 using namespace std;
 
 
-class store {
-public:
-	char username;
-};
-
 static int callback(void *data, int argc, char **argv, char **azColName) {
 	int i;
 	fprintf(stderr, "%s: ", (const char*)data);
@@ -46,12 +41,6 @@ int main(int argc, char* argv[])
 		cout << "Please try again: ";
 		getline(cin, name);
 	}
-	
-	/*
-	Just kinda writing here to maybe help?
-	Question "Add items to cart, examine cart, or view prior purchase"; recieve input
-	If-elif-elif to three choices
-	*/
 
 	/*Open database*/
 	rc = sqlite3_open("test.db", &db);
@@ -65,17 +54,6 @@ int main(int argc, char* argv[])
 
 	/* Create SQL statement*/
 	sql = "SELECT * from inventory";
-	
-	/*
-	For updating in the database,
-	should just need to do
-	something along the lines of:
-	
-	UPDATE test
-	SET quantity = quantity - 1
-	WHERE name = "insertproductnamehere";
-	
-	*/
 
 	/*Execute SQL*/
 	rc = sqlite3_exec(db, sql, callback, (void*)data, &zErrMsg);
@@ -86,6 +64,190 @@ int main(int argc, char* argv[])
 	else {
 		fprintf(stdout, "Operation done successfully\n");
 	}
+
+
+
+	/*Get item type and quantity*/
+	/*
+	string item;
+	cout << "Please select the item you wish to purchase: ";
+	cin >> item;
+	cout << item;
+	cout << "\n";
+	*/
+	int x = 1;
+	int y;
+	while (x) {
+		cout << "Do you wish to add an item(1) or remove an item(0)? ";
+		cin >> y;
+		if (y == 1) {
+			string item;
+			sql = "SELECT * FROM inventory";
+			rc = sqlite3_exec(db, sql, callback, (void*)data, &zErrMsg);
+			cout << "Please select the item you wish to purchase: ";
+			cin >> item;
+			cout << item;
+			cout << "\n";
+			if (item == "toothpaste") {
+				int temp;
+				int y = 0;
+				sql = "SELECT * FROM inventory WHERE item = 'toothpaste'";
+				cout << "how many?: ";
+				cin >> temp;
+				for (int x = 0; x < temp; x++) {
+					sql = "UPDATE inventory set quantity = quantity -1 WHERE item = 'toothpaste'";
+					rc = sqlite3_exec(db, sql, callback, (void*)data, &zErrMsg);
+					sql = "UPDATE cart set quantity = quantity +1 WHERE item = 'toothpaste'";
+					rc = sqlite3_exec(db, sql, callback, (void*)data, &zErrMsg);
+					sql = "UPDATE cart set price = price +7 WHERE item = 'toothpaste'";
+					rc = sqlite3_exec(db, sql, callback, (void*)data, &zErrMsg);
+				}
+			}
+			else if (item == "SW design book") {
+				int temp;
+				int y = 0;
+				sql = "SELECT * FROM inventory WHERE item = 'SW design book'";
+				cout << "how many?: ";
+				cin >> temp;
+				for (int x = 0; x < temp; x++) {
+					sql = "UPDATE inventory set quantity = quantity -1 WHERE item = 'SW design book'";
+					rc = sqlite3_exec(db, sql, callback, (void*)data, &zErrMsg);
+					sql = "UPDATE cart set quantity = quantity +1 WHERE item = 'SW design book'";
+					rc = sqlite3_exec(db, sql, callback, (void*)data, &zErrMsg);
+					sql = "UPDATE cart set price = price +170 WHERE item = 'SW design book'";
+					rc = sqlite3_exec(db, sql, callback, (void*)data, &zErrMsg);
+				}
+			}
+			else if (item == "doll") {
+				int temp;
+				int y = 0;
+				sql = "SELECT * FROM inventory WHERE item = 'doll'";
+				cout << "how many?: ";
+				cin >> temp;
+				for (int x = 0; x < temp; x++) {
+					sql = "UPDATE inventory set quantity = quantity -1 WHERE item = 'doll'";
+					rc = sqlite3_exec(db, sql, callback, (void*)data, &zErrMsg);
+					sql = "UPDATE cart set quantity = quantity +1 WHERE item = 'doll'";
+					rc = sqlite3_exec(db, sql, callback, (void*)data, &zErrMsg);
+					sql = "UPDATE cart set price = price +5 WHERE item = 'doll'";
+					rc = sqlite3_exec(db, sql, callback, (void*)data, &zErrMsg);
+				}
+			}
+			else if (item == "camera") {
+				int temp;
+				int y = 0;
+				sql = "SELECT * FROM inventory WHERE item = 'camera'";
+				cout << "how many?: ";
+				cin >> temp;
+				for (int x = 0; x < temp; x++) {
+					sql = "UPDATE inventory set quantity = quantity -1 WHERE item = 'camera'";
+					rc = sqlite3_exec(db, sql, callback, (void*)data, &zErrMsg);
+					sql = "UPDATE cart set quantity = quantity +1 WHERE item = 'camera'";
+					rc = sqlite3_exec(db, sql, callback, (void*)data, &zErrMsg);
+					sql = "UPDATE cart set price = price +50 WHERE item = 'camera'";
+					rc = sqlite3_exec(db, sql, callback, (void*)data, &zErrMsg);
+				}
+
+			}
+		}
+
+		/*removing from cart*/
+		else if (y == 0) {
+			string item;
+			sql = "SELECT * FROM inventory";
+			rc = sqlite3_exec(db, sql, callback, (void*)data, &zErrMsg);
+			cout << "Please select the item you wish to remove: ";
+			cin >> item;
+			cout << item;
+			cout << "\n";
+			if (item == "toothpaste") {
+				int temp;
+				int y = 0;
+				sql = "SELECT * FROM inventory WHERE item = 'toothpaste'";
+				cout << "how many?: ";
+				cin >> temp;
+				for (int x = 0; x < temp; x++) {
+					sql = "UPDATE inventory set quantity = quantity +1 WHERE item = 'toothpaste'";
+					rc = sqlite3_exec(db, sql, callback, (void*)data, &zErrMsg);
+					sql = "UPDATE cart set quantity = quantity -1 WHERE item = 'toothpaste'";
+					rc = sqlite3_exec(db, sql, callback, (void*)data, &zErrMsg);
+					sql = "UPDATE cart set price = price -7 WHERE item = 'toothpaste'";
+					rc = sqlite3_exec(db, sql, callback, (void*)data, &zErrMsg);
+				}
+			}
+			else if (item == "SW design book") {
+				int temp;
+				int y = 0;
+				sql = "SELECT * FROM inventory WHERE item = 'SW design book'";
+				cout << "how many?: ";
+				cin >> temp;
+				for (int x = 0; x < temp; x++) {
+					sql = "UPDATE inventory set quantity = quantity +1 WHERE item = 'SW design book'";
+					rc = sqlite3_exec(db, sql, callback, (void*)data, &zErrMsg);
+					sql = "UPDATE cart set quantity = quantity -1 WHERE item = 'SW design book'";
+					rc = sqlite3_exec(db, sql, callback, (void*)data, &zErrMsg);
+					sql = "UPDATE cart set price = price -170 WHERE item = 'SW design book'";
+					rc = sqlite3_exec(db, sql, callback, (void*)data, &zErrMsg);
+				}
+				sql = "SELECT * FROM cart";
+				cout << "\n";
+			}
+			else if (item == "doll") {
+				int temp;
+				int y = 0;
+				sql = "SELECT * FROM inventory WHERE item = 'doll'";
+				cout << "how many?: ";
+				cin >> temp;
+				for (int x = 0; x < temp; x++) {
+					sql = "UPDATE inventory set quantity = quantity +1 WHERE item = 'doll'";
+					rc = sqlite3_exec(db, sql, callback, (void*)data, &zErrMsg);
+					sql = "UPDATE cart set quantity = quantity -1 WHERE item = 'doll'";
+					rc = sqlite3_exec(db, sql, callback, (void*)data, &zErrMsg);
+					sql = "UPDATE cart set price = price -5 WHERE item = 'doll'";
+					rc = sqlite3_exec(db, sql, callback, (void*)data, &zErrMsg);
+				}
+				sql = "SELECT * FROM cart";
+				cout << "\n";
+			}
+			else if (item == "camera") {
+				int temp;
+				int y = 0;
+				sql = "SELECT * FROM inventory WHERE item = 'camera'";
+				cout << "how many?: ";
+				cin >> temp;
+				for (int x = 0; x < temp; x++) {
+					sql = "UPDATE inventory set quantity = quantity +1 WHERE item = 'camera'";
+					rc = sqlite3_exec(db, sql, callback, (void*)data, &zErrMsg);
+					sql = "UPDATE cart set quantity = quantity -1 WHERE item = 'camera'";
+					rc = sqlite3_exec(db, sql, callback, (void*)data, &zErrMsg);
+					sql = "UPDATE cart set price = price -50 WHERE item = 'camera'";
+					rc = sqlite3_exec(db, sql, callback, (void*)data, &zErrMsg);
+				}
+				sql = "SELECT * FROM cart";
+				rc = sqlite3_exec(db, sql, callback, (void*)data, &zErrMsg);
+				cout << "\n";
+			}
+		}
+		sql = "SELECT * FROM cart";
+		cout << "This is your cart:\n";
+		rc = sqlite3_exec(db, sql, callback, (void*)data, &zErrMsg);
+		cout << "\n";
+		cout << "Continue? 1 = yes, 0 = no : ";
+		cin >> x;
+	}
+
+
+	
+
+	if (rc != SQLITE_OK) {
+		fprintf(stderr, "SQL eror %s\n", zErrMsg);
+		sqlite3_free(zErrMsg);
+	}
+	else {
+		fprintf(stdout, "Operation done successfully\n");
+	}
+	
 	system("PAUSE");
+	sqlite3_close(db);
 	return 0;
 }
