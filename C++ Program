@@ -3,7 +3,9 @@
 2. Ask how many of which item user wants
 3. Multiply price by amount
 4. Get total price in cart
-5. Subtract amount from quantity in database
+5. Subtract amount from quantity in 
+
+By Cole T. Cosby & Chase Barr
 */
 
 #include <iostream>
