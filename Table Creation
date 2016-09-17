@@ -7,6 +7,8 @@ INSERT INTO inventory(item, quantity, price)
   VALUES ('doll', 250, 5);
 INSERT INTO inventory(item, quantity, price)
   VALUES ('camera', 150, 50);  
+CREATE TABLE cart(item TEXT, quantity INT, price INT);
+
 
 //
 .mode column
