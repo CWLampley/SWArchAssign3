@@ -8,6 +8,15 @@ INSERT INTO inventory(item, quantity, price)
 INSERT INTO inventory(item, quantity, price)
   VALUES ('camera', 150, 50);  
 CREATE TABLE cart(item TEXT, quantity INT, price INT);
+  INSERT INTO cart (item , quantity, price)
+    VALUES ('toothpaste', 0, 0
+    INSERT INTO cart (item , quantity, price)
+    VALUES ('SW design book', 0, 0);
+    INSERT INTO cart (item , quantity, price)
+    VALUES ('doll', 0, 0);
+    INSERT INTO cart (item , quantity, price)
+    VALUES ('camera', 0, 0);
+    
 
 
 //
